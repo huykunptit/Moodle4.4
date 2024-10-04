@@ -1,0 +1,36 @@
+<div class="mt-4 d-flex flex-column flex-sm-row flex-md-row flex-lg-row align-items-center">
+    <div class="row container justify-content-center mx-auto mb-2">
+        <div class="col-md-3 mb-2 p-1">
+            <select id="filterAll" class="form-control">
+                {{#filters}}
+                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/filters}}
+            </select>
+        </div>
+
+        <div class="col-md-3 mb-2 p-1">
+            <input type="text" id="searchInput" class="form-control" placeholder="{{searchPlaceholder}}">
+        </div>
+
+        <div class="col-md-3 mb-2 p-1">
+            <select id="sortBy" class="form-control">
+                {{#sortOptions}}
+                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/sortOptions}}
+            </select>
+        </div>
+
+        <div class="col-md-3 mb-2 p-1">
+            <select id="viewType" class="form-control">
+                {{#viewTypes}}
+                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/viewTypes}}
+            </select>
+        </div>
+
+        
+    </div>
+    <div>
+        <a href="{{exportUrl}}" class="btn btn-default mb-2 border-1" id="ExportFile" style="border-color:#ccc;"><img style="filter: invert(36%) sepia(98%) saturate(6969%) hue-rotate(315deg) brightness(90%) contrast(119%);" src="http://localhost/moodle4.3_github/theme/image.php/boost/assign/1726013337/monologo?filtericon=1" class="activityicon color-icon" data-region="activity-icon" data-id="11630" alt=""></a>
+    </div>
+</div>

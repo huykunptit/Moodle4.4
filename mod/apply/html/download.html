@@ -1,0 +1,34 @@
+<style type="text/css">
+  <?php include("html.css")?>
+</style>
+
+<table border="0" align="center">
+  <tr>
+    <td align="center">
+      <table border="0" style="margin: 0px 0px 0px 0px;">
+        <tr>
+          <td>
+            <form name="download" action="<?php echo $export_url;?>" method="get">
+              <input type="hidden" name="sesskey"  value="<?php echo sesskey();?>" />
+              <input type="hidden" name="id"       value="<?php echo $id;?>" />
+              <input type="hidden" name="course"   value="<?php echo $course->id;?>" />
+              <input type="hidden" name="action"   value="excel">
+              <input type="submit" value="<?php print_string('downloadexcel','apply')?>" />
+            </form>
+          </td>
+          <td>&nbsp;</td>
+          <td>
+            <form name="download" action="<?php echo $export_url;?>" method="get">
+              <input type="hidden" name="sesskey"  value="<?php echo sesskey();?>" />
+              <input type="hidden" name="id"       value="<?php echo $id;?>" />
+              <input type="hidden" name="course"   value="<?php echo $course->id;?>" />
+              <input type="hidden" name="action"   value="text">
+              <input type="submit" value="<?php print_string('downloadtext','apply')?>" />
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+

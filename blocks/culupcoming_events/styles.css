@@ -1,0 +1,132 @@
+.block_culupcoming_events .content {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.block.block_culupcoming_events .reload,
+.dockeditempanel_hd .reload {
+    display: none;
+    text-align: right;
+    padding-left: 5px;
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+
+.block_culupcoming_events .culupcoming_events {
+    width: 100%;
+    max-height: 400px;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+.block_culupcoming_events ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.block_culupcoming_events li {
+    padding: 1%;
+    line-height: 16px;
+}
+
+.block_culupcoming_events li.new {
+    background-color: #fffacd;
+}
+
+.block_culupcoming_events .avatar {
+    display: inline-block;
+    vertical-align: top;
+    width: 19%;
+    margin: 0 0.5%;
+    overflow: hidden;
+}
+
+.block_culupcoming_events .avatar a {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    float: left;
+}
+
+.block_culupcoming_events .avatar img {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    bottom: -100%;
+    right: -100%;
+    height: 35px;
+    width: 35px;
+    margin: auto;
+}
+
+.block_culupcoming_events .notificationtext {
+    display: inline-block;
+    width: 70%;
+    overflow: hidden;
+}
+
+.block_culupcoming_events .activityicon {
+    display: inline-block;
+    width: 10%;
+    text-align: right;
+}
+
+.block_culupcoming_events .activityicon img {
+    padding-right: 0;
+}
+
+.block_culupcoming_events .timeuntil {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.block_culupcoming_events .contexturls {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    font-size: 90%;
+}
+
+.block_culupcoming_events_reload {
+    text-align: center;
+    margin-left: 0.25rem;
+}
+
+.block_culupcoming_events_loading {
+    display: none;
+    text-align: center;
+    margin-left: 0.25rem;
+}
+
+.block_culupcoming_events_reload img,
+.block_culupcoming_events_loading img {
+    height: 12px;
+    width: 12px;
+    margin: 4px;
+    margin-bottom: 6px;
+}
+
+.block_culupcoming_events .event,
+.block_culupcoming_events .meta {
+    display: flex;
+    width: 100%;
+}
+
+.block_culupcoming_events hr {
+    margin: 5px 0;
+}
+
+.block_culupcoming_events .footer {
+    clear: both;
+    padding: 10px 8px 0 10px;
+    border-top: 1px solid #efefef;
+}

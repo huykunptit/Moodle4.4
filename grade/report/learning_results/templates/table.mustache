@@ -1,0 +1,28 @@
+<div class="table-container" style="margin-top: 20px;" id="table-data">
+    <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="text-align:center;">Tên khóa học</th>
+                <th style="text-align:center;">Mã bài tập</th>
+                <th style="text-align:center;">Tên bài tập</th>
+                <th style="text-align:center;">Điểm</th>
+                <th style="text-align:center;">Phần trăm hoàn thành</th>
+                <th style="text-align:center;">Hoàn thành khóa học</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#courses}}
+            <tr>
+                <td>{{coursename}}</td>
+                {{#grades}}
+                <td>{{item_id}}</td>
+                <td>{{item_name}}</td>
+                <td>{{grade}}</td>
+                {{/grades}}
+                <td>{{completion_percentage}}%</td>
+                <td>{{#course_complete}}Hoàn thành{{/course_complete}}{{^course_complete}}Chưa hoàn thành{{/course_complete}}</td>
+            </tr>
+            {{/courses}}
+        </tbody>
+    </table>
+</div>

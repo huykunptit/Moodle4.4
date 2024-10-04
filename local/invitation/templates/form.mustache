@@ -1,0 +1,55 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_invitation/form
+
+    A form template.
+
+    Context variables required for this template:
+    * title       - String used as title
+    * autoopen    - Boolean flag to autoopen the collapsed content
+    * formcontent - String the mform content
+    * backurl     - String the url to go back after using this form
+
+    Example context (json):
+    {
+        "title": "Create an invitation",
+        "autoopen": 1,
+        "backurl": "https://domain.tld/example",
+        "formcontent": "<div>formcontent</div>"
+    }
+}}
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card invitationsettings">
+            <div class="card-header">
+                <h2><a data-toggle="collapse" href="#collapse-{{uniqid}}"><i class="fa fa-plus-circle"></i> {{title}}</a></h2>
+            </div>
+            <div class="collapse{{#autoopen}} show{{/autoopen}}" id="collapse-{{uniqid}}">
+                <div class="card-body">
+                    {{{formcontent}}}
+                    {{#backurl}}
+                    <div class="back-to-course">
+                        <a href="{{{.}}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{#str}} back_to_course, local_invitation{{/str}}</a>
+                    </div>
+                    {{/backurl}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

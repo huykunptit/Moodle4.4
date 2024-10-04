@@ -1,0 +1,159 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_invitation/invitation_info
+
+    A template to show the invitation info including the invite url and a qu-code
+
+    Context variables required for this template:
+    * title
+    * editformbox
+    * deleteformbox
+    * qrcodebutton
+    * url
+    * timestartwarning
+    * timestart
+    * timeendwarning
+    * timeend
+    * usedslots
+    * freeslots
+    * slots
+    * qrcodeimg
+    * note
+    * courseurl
+
+    Example context (json):
+    {
+        "title": "Create an invitation",
+        "editformbox": "<div>edit form content</div>",
+        "deleteformbox": "<div>delete form content</div>",
+        "qrcodebutton": "<div>content with qr-code</div>",
+        "url": "https://example.com",
+        "timestartwarning": 0,
+        "timestart": "2022-02-08 10:00",
+        "timeendwarning": 1,
+        "timeend": "2022-02-08 12:00",
+        "usedslots": 12,
+        "freeslots": 3,
+        "slots": 15,
+        "qrcodeimg": "https://qrcodeimage.example.com/dummy.png",
+        "note": "created",
+        "courseurl": "https://example.com"
+    }
+}}
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card invitationsettings mb-3 bg-light border border-primary">
+            <div class="card-body">
+                <div class="card-title">
+                    <div class="d-flex">
+                        <h2>{{title}}</h2>
+                        <div class="ml-2 align-self-center">{{{editformbox}}}</div>
+                        <div class="ml-2 align-self-center">{{{deleteformbox}}}</div>
+                        <div class="ml-2 align-self-center">{{{qrcodebutton}}}</div>
+                    </div>
+                </div>
+                <div class="invitation-url">
+                    <a id="inviteurl-{{uniqid}}" href="{{{url}}}">{{{url}}}</a>
+                    <button id="copy-{{uniqid}}" class="btn btn-secondary" data-toggle="tooltip" title="{{#str}} clipboard, local_invitation {{/str}}">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-xl-7">
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        {{#str}} available_from, local_invitation {{/str}}
+                                    </th>
+                                    <td {{#timestartwarning}}class="text-danger"{{/timestartwarning}}>
+                                        {{timestart}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{#str}} available_to, local_invitation {{/str}}
+                                    </th>
+                                    <td {{#timeendwarning}}class="text-danger"{{/timeendwarning}}>
+                                        {{timeend}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{#str}} usedslots, local_invitation {{/str}}
+                                    </th>
+                                    <td>
+                                        {{usedslots}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {{#freeslots}}
+                                        <th class="text-success">
+                                            {{#str}} free_slots, local_invitation {{/str}}
+                                        </th>
+                                        <td class="text-success">
+                                            {{slots}} <i class="fa fa-check"></i>
+                                        </td>
+                                    {{/freeslots}}
+                                    {{^freeslots}}
+                                        <th class="text-danger">
+                                            {{#str}} free_slots, local_invitation {{/str}}
+                                        </th>
+                                        <td class="text-danger">
+                                            {{slots}} <i class="fa fa-times"></i>
+                                        </td>
+                                    {{/freeslots}}
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="d-none d-xl-flex justify-content-center qrcode">
+                            <img class="qrcode" src="{{{qrcodeimg}}}" alt="qrcodetitle">
+                        </div>
+                        <div class="d-inline d-xl-none">
+                            <button class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="#qrcode-{{uniqid}}">{{qrcodebuttontitle}}</button>
+                            <div id="qrcode-{{uniqid}}" class="collapse">
+                                <img class="qrcode mt-2" src="{{{qrcodeimg}}}" alt="qrcodetitle">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="invitation-note">
+                    <span class="font-weight-bold">{{#str}} note, local_invitation {{/str}}</span>
+                    <span>{{note}}</span>
+                </div>
+                <div class="back-to-course">
+                    <a href="{{{courseurl}}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{#str}} back_to_course, local_invitation{{/str}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{#js}}
+require(['local_invitation/clipboard'], function(clipboard) {
+    clipboard.init(
+        'copy-{{uniqid}}',
+        'inviteurl-{{uniqid}}',
+        '{{uniqid}}',
+        '{{#str}} clipboard, local_invitation {{/str}}',
+        '{{#str}} link_copied, local_invitation {{/str}}'
+    );
+});
+{{/js}}

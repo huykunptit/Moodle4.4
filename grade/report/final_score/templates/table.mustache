@@ -1,0 +1,42 @@
+<div class=" grade-report-container">
+    <div class></div>
+    <div class="main-section">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="9" class="text-center">Bảng điểm thành phần</th>
+                    </tr>
+                </thead>
+                <thead class="thead-white">
+                    <tr>
+                        <th scope="col"  class="text-center">Số TT</th>
+                        <th scope="col"  class="text-center">Mã SV</th>
+                        <th scope="col" class="text-center">Họ, đệm</th>
+                        <th scope="col" class="text-center">Tên</th>
+                        <th scope="col" class="text-center">Lớp</th>
+                        <th scope="col" class="text-center">Điểm chuyên cần</th>
+                        <th scope="col" class="text-center">Điểm kiểm tra</th>
+                        <th scope="col" class="text-center">Điểm TN TH</th>
+                        <th scope="col" class="text-center">Điểm BTL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#students}}
+                    <tr>
+                        <td  class="text-center">{{index}}</td>
+                        <td  class="text-center">{{student_id}}</td>
+                        <td >{{first_name}}</td>
+                        <td>{{last_name}}</td>
+                        <td  class="text-center">{{class}}</td>
+                        <td  class="text-center">{{attendance_grade}}</td>
+                        <td  class="text-center">{{assignment_grade}}</td>
+                        <td  class="text-center">{{practice_grade}}</td>
+                        <td  class="text-center">{{final_project_grade}}</td>
+                    </tr>
+                    {{/students}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
